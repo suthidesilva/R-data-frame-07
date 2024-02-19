@@ -1,0 +1,111 @@
+---
+title: "A12 - CSC 285"
+author: "Suthi de Silva"
+date: "1/24/2024"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(glue)
+library(readr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(mosaic)
+library(scales)
+library(RColorBrewer)
+library(showtext)
+```
+
+# Top 30 test wicket takers in Cricket
+
+## Loading the data
+
+```{r}
+ct <- read.csv(file="/srv/R/CSC285_public/Suthi /Data/cric table.csv",  header = TRUE)
+
+```
+
+#### Write a summary of your graph and design choices
+
+**1. Provide a citation and any necessary background information**
+
+*Cricket is a bat-and-ball game played between two teams, each consisting of eleven players. It is a popular sport in many countries, particularly in England, Australia, India, Pakistan, South Africa, West Indies, and other parts of the world. Cricket is known for its rich traditions, diverse formats, and passionate fan base.*
+
+*Test cricket is the longest format of the sport of cricket. It is considered the highest standard of the game and is played between national teams that are Full Members of the International Cricket Council (ICC). Test matches are characterized by their extended duration, spanning up to five days.*
+
+*To rank the top 30 best test wicket-takers in cricket means to list and order the players who have taken the highest number of wickets in Test matches. In cricket, a wicket is taken when a bowler dismisses a batsman by getting them out. The number of wickets a player takes is a significant measure of their bowling performance. The ranking considers the total number of wickets taken by players in Test matches, with those who have taken more wickets being ranked higher on the list. This statistic reflects the effectiveness and success of bowlers in the longest format of the game. The list is dynamic and can change as active players continue to play and take more wickets.*
+
+https://www.britannica.com/sports/cricket-sport
+
+
+
+**2. Explain the goal of the tables within the paper**
+
+Ranking the top 30 players in terms of Test wickets serves several purposes in the context of cricket:
+
+  1. **Performance Evaluation:** It provides a quantitative measure of a player's performance as a bowler in Test matches. The number of wickets a player takes reflects their effectiveness in taking crucial wickets during the course of Test series or career.
+
+  2. **Historical Comparison:** The rankings allow cricket enthusiasts, analysts, and fans to compare players across different eras. It helps in understanding how contemporary players fare against legendary bowlers from the past.
+
+  3. **Recognition:** Being among the top-ranked players in terms of wickets is a significant achievement and brings recognition to the bowlers. It highlights their contributions to their team's success and their impact on the game.
+
+  4. **Competitive Motivation:** The rankings create a sense of healthy competition among bowlers, encouraging them to strive for excellence and improve their performance. Players may set personal goals to climb the rankings ladder.
+
+  5. **Selection Criteria:** National selectors and team management may consider a player's ranking when making decisions about team selection. High-ranking bowlers are often preferred due to their proven ability to take wickets consistently.
+
+  6. **Fan Engagement:** Cricket fans closely follow player rankings as it adds an extra layer of excitement and discussion around the sport. It sparks debates and conversations about the skills and contributions of different players.
+
+
+
+**3. Include your visualization**
+
+```{r}
+# As a bar chart
+ggplot(ct, aes(x= Player, y = Wkts, fill=as.factor(Player))) + 
+  geom_bar(stat = "identity") + 
+  labs( title = "Barplot for top 30 test wicket-takers in Cricket",
+       x = "Player",
+       y = "Wickets" ) +
+  theme(legend.position='none') +
+  coord_flip()
+```
+
+**4. Explain why your graph is a better representation of the data than the table**
+
+  **Visual Comparison**: A bar plot allows for a quick visual comparison of the wicket counts for each player. The length of the bars provides an immediate sense of the relative magnitudes, making it easier to identify the top performers.
+  **Ranking Order**: The bars in the plot are arranged in a specific order, reflecting the ranking of players. This visual hierarchy makes it easy to see who is leading in terms of wickets and how others stack up in comparison.
+  **Patterns and Trends**: Bar plots help in identifying patterns and trends in the data. For example, it may reveal clusters of players with similar wicket counts, or it might highlight a sharp increase or decrease in wickets at a certain point in the ranking.
+  **Visual Appeal**: Graphical representations are often more visually appealing and engaging than plain tables of numbers. This can enhance the audience's interest and understanding of the information being presented.
+  **Accessibility**: Visualizations can make data more accessible to a broader audience. People who may not be familiar with the specific numbers can still grasp the overall trends and comparisons through the visual representation.
+
+  While tables are useful for presenting precise numerical information, bar plots are effective tools for conveying the overall patterns and rankings in a visually intuitive manner. Choosing the right visualization depends on the specific goals and preferences of the audience and the insights you want to communicate.
+
+  a. Cite the tables to graph article when making your case
+*https://www.espncricinfo.com/records/most-wickets-in-career-93276*
+*https://www.espncricinfo.com/records/most-wickets-in-career-93276*
+
+
+
+**5. Justify your design choices**
+
+  a. Cite the book when making your case
+  
+  https://www.blinkist.com/en/books/calling-bullshit-en
+  
+  - A bar plot allows for a quick visual comparison of the wicket counts for each player. 
+  - The length of the bars provides an immediate sense of the relative magnitudes, making it easier to identify the top performers.
+  - The bars in the plot are arranged in a specific order, reflecting the ranking of players. 
+  - This visual hierarchy makes it easy to see who is leading in terms of wickets and how others stack up in comparison.
+  - Bar plots help in identifying patterns and trends in the data. For example, it may reveal clusters of players with similar wicket counts or highlight a sharp increase or decrease in wickets at a certain point in the ranking.
+  - Graphical representations are often more visually appealing and engaging than plain tables of numbers. 
+  - This can enhance the audience's interest and understanding of the information being presented.
+  - Visualizations can make data more accessible to a broader audience. 
+  - People who may not be familiar with the specific numbers can still grasp the overall trends and comparisons through the visual representation.
+
+**6. Include your R Markdown**
+  
+  Included.
+
+
